@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+
+        <!-- Název stránky -->
+        <title>Objednavkový formulář</title>
+
+        <!-- Načtení CSS souboru -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    
+    <body>
+        <!-- Hlavní formulář pro objednávku -->
+        <form method="POST" action="/order">
+
+            <!-- Nadois formuláře -->
+            <h1>Objednavkový formulář</h1>
+
+            <!-- Jméno/Společnost -->
+            <p>
+                <label><strong>Jméno a Příjmení/Společnost:</strong></label>
+                <input type="text" name="jmeno_prijmeni" required>
+            </p>
+
+            <!-- IČO -->
+            <p>
+                <label><strong>IČO:</strong></label>
+                <input type="text" name="ico" pattern="[0-9]{8}">
+            </p>
+
+            <!-- Adresa objednavatele -->
+            <p>
+                <label><strong>Adresa objednavatele:</strong></label>
+                <input type="text" name="adresa" required>
+            </p>
+
+            <!-- Telefonní číslo -->
+            <p>
+                <label><strong>Telefonní číslo:</strong></label>
+                <input type="tel" name="telefon" required pattern="[0-9+()]{9,15}">
+            </p>
+
+            <!-- Email -->
+            <p>
+                <label><strong>E-mail:</strong></label>
+                <input type="email" name="email" required>
+            </p>
+
+            <!-- Datum objednávky -->
+            <p>
+                <label><strong>Datum objednávky</strong></label>
+                <input type="date" name="datum" required>
+            </p>
+
+            <!-- Výběr produktu s uloženou cenou -->
+            <p>
+                <label><strong>Výběr zboží</strong>
+                <select name="produkt" id="produkt">
+                <option value="A" data-price="1500">Zboží A (1500 CZK)</option>
+                <option value="B" data-price="2500">Zboží B (2500 CZK)</option>
+                <option value="C" data-price="2000">Zboží C (2000 CZK)</option>
+                </select>
+            </p>
+
+            <!-- Počet kusů -->
+            <p>
+                <label><strong>Počet kusů</strong>
+                <input type="number" name="kusy" id="kusy" required min="1" value="1">
+            </p>
+
+            <!-- Celková cena-->
+            <p>
+                <strong>Celková cena:<span id="celkovaCena"> 0</span> Kč</strong>
+            </p>
+
+            <!-- Skript pro výpočet ceny dle produktu a množství -->
+            <script>
+                const produktSelect = document.getElementById("produkt");
+                const kusyInput = document.getElementById("kusy");
+                const celkovaCenaSpan = document.getElementById("celkovaCena");
+
+                function updateTotal() {
+                    const cena = parseFloat(produktSelect.selectedOptions[0].dataset.price);
+                    const mnozstvi = parseInt(kusyInput.value) || 0;
+
+                        celkovaCenaSpan.textContent = cena * mnozstvi;
+                    }
+
+                produktSelect.addEventListener("change", updateTotal);
+                kusyInput.addEventListener("input", updateTotal);
+
+                updateTotal();
+                </script>
+            
+            <!-- Tlačítko pro odeslání objednávky -->
+            <p>
+                <button type="submit">Odeslat objednávku</button>
+            </p>
+        </form>
+    </body>
+</html>
+
+
+
+
+

@@ -1,0 +1,46 @@
+body {
+    font-family: Times New Roman;
+    margin-top: 40px;
+    
+}
+
+form {
+    width: 420px;
+    margin: 0 auto;
+}
+
+p {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.centrovany-text {
+    text-align: center;
+    font-family: "Times New Roman";
+}
+
+.centrovany-text p {
+    margin: 10px 0;
+    display: block;      
+}
+
+.centrovany-text h1,
+.centrovany-text h2 {
+    margin: 20px 0 10px 0;
+    display: block;      
+}
+
+

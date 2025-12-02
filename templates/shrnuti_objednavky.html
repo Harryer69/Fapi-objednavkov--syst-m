@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <!-- Název stránky -->
+        <title>Shrnutí objednávky</title>
+
+        <!-- Načtení souboru CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+
+    <!-- Třída pro centrovaný text -->
+    <body class="centrovany-text">
+
+        <!-- Hlavní potvrzení objednávky -->
+        <h1>Objednávka byla přijata. Děkujeme za objednávku.</h1>
+
+        <!-- Rekapitulace údajů -->
+        <h2> Rekapitulace objednávky</h2>
+        <p><strong>Jméno a Příjmení/Společnost:</strong> {{ jmeno_prijmeni }}</p>
+        <p><strong>IČO:</strong> {{ ico }}</p>
+        <p><strong>Adresa:</strong> {{ adresa }}</p>
+        <p><strong>Telefon:</strong> {{ telefon }}</p>
+        <p><strong>Email:</strong> {{ email }}</p>
+        <p><strong>Datum:</strong> {{ datum }}</p>
+
+        <!-- Ceny -->
+        <h2>Cena</h2>
+        <p><strong>Mezisoučet (bez DPH):</strong> {{mezisoucet}} Kč</p>
+        <p><strong>DPH (21%):</strong> {{ dph }} Kč</p>
+        <p><strong>Cena s DPH:</strong> {{ cena_s_dph }} Kč</p>
+
+        <!-- Přepočet na EURA -->
+        <h2>Přepočet na Eura</h2>
+        <p><strong>Kurz EUR dle ČNB:</strong> {{ kurz_eura }} Kč</p>
+        <p><strong>Cena v EUR:</strong> {{ cena_v_eurech }} €</p>
+    </body>
+</html>
